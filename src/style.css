@@ -1,0 +1,52 @@
+body {
+    background-color: wheat;
+}
+
+.active {
+    background-color:aquamarine;
+    
+}
+
+#active {
+    background-color: aquamarine;
+}
+
+.inforTable {
+    border-style:double;
+    border-color:rgb(105, 188, 171);
+}
+
+.type {
+    display: flex;
+    flex-direction: row;
+}
+
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-list img {
+    height: 120px;
+    width: 120px;
+}
+
+.pokemon-list h4 {
+    text-align: center;
+}
+
+.imgBorder {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 5px;
+    border-color:rgb(105, 188, 171);
+}
+
+.img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
