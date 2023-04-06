@@ -27,4 +27,4 @@ function display({ currentPokemons, currentId }) {
     )
 }
 
-export default display
+export default display;

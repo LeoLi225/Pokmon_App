@@ -49,4 +49,4 @@ function Search({ setTypeSelectedArray }) {
   )
 }
 
-export default Search
+export default Search;

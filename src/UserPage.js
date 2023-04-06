@@ -5,7 +5,7 @@ import axios from 'axios'
 import Display from './Display';
 import React, { useEffect, useState } from 'react'
 
-function UserPage() {
+function UserPage({ username, refreshtoken, accesstoken, setAccesstoken }) {
   const [typeSelectedArray, setTypeSelectedArray] = useState([]);
   const [pokemons, setPokemons] = useState([]);
   const [currentId, setCurrentId] = useState(null);
@@ -49,7 +49,10 @@ function UserPage() {
       <Search
         setTypeSelectedArray={setTypeSelectedArray}
       />
-      < Page currentPokemons={currentPokemons} setCurrentId={setCurrentId} currentId={currentId} />
+      < Page currentPokemons={currentPokemons} setCurrentId={setCurrentId} currentId={currentId} 
+            refreshtoken={refreshtoken} username={username} accesstoken={accesstoken} setAccesstoken={setAccesstoken} 
+      />
+
       < Pagination
         numberOfPages={numberOfPages}
         currentPage={currentPage}

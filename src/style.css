@@ -7,10 +7,6 @@ body {
     
 }
 
-#active {
-    background-color: aquamarine;
-}
-
 .inforTable {
     border-style:double;
     border-color:rgb(105, 188, 171);

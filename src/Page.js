@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Pokemon from './Pokemon'
 import "./style.css"
 
-function page({ currentPokemons, setCurrentId, currentId }) {
-
-  const showInfo = (item) => {
-    setCurrentId(item.id)
-  }
+function page({ currentPokemons, setCurrentId, currentId, refreshtoken, username, accesstoken, setAccesstoken }) {
 
   return (
     <div>
@@ -14,12 +10,20 @@ function page({ currentPokemons, setCurrentId, currentId }) {
         {
           currentPokemons.map(item => {
             return <>
-              <div className='imgBorder' id={(currentId === item.id) ? 'active' : ''} onClick={() => showInfo(item)}>
-                <Pokemon pokemon={item} />
-                <h4>{item.name.english}</h4>
-                <br/>
+              <div className='imgBorder'>
+                <div key={item.id}>  <Pokemon pokemon={item} setCurrentId={setCurrentId} currentId={currentId} accessToken={accesstoken} setAccessToken={setAccesstoken} refreshToken={refreshtoken} userid={username} />   </div>
               </div>
             </>
+            // return <>
+            //   <div className='imgBorder'>
+            //     <div className={(currentId === item.id) ? 'active' : ''} onClick={() => showInfo(item)}>
+            //       <Pokemon key={item.id} pokemon={item} accesstoken={accesstoken} username={username} currentId={currentId}
+            //         refreshtoken={refreshtoken} setAccesstoken={setAccesstoken} />
+            //       <h4>{item.name.english}</h4>
+            //       <br />
+            //     </div>
+            //   </div>
+            // </>
           })
         }
       </div>
@@ -27,4 +31,4 @@ function page({ currentPokemons, setCurrentId, currentId }) {
   )
 }
 
-export default page
+export default page;
