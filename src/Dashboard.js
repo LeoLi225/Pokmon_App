@@ -20,11 +20,11 @@ export default function Dashboard({accessToken,refreshToken, setAccessToken}) {
     <>
       <nav>
         <ul>
-          <li><Link to="/Report/1">Report1</Link></li>
-          <li><Link to="/Report/2">Report2</Link></li>
-          <li><Link to="/Report/3">Report3</Link></li>
-          <li><Link to="/Report/4">Report4</Link></li>
-          <li><Link to="/Report/5">Report5</Link></li>
+          <li><Link to="/Report/1">Report1--Unique API users over a period of time</Link></li>
+          <li><Link to="/Report/2">Report2--Top API users over period of tie</Link></li>
+          <li><Link to="/Report/3">Report3--Top users for each Endpoint</Link></li>
+          <li><Link to="/Report/4">Report4--4xx Errors By Endpoint</Link></li>
+          <li><Link to="/Report/5">Report5--Recent 4xx/5xx Errors</Link></li>
         
         </ul>
       </nav>
