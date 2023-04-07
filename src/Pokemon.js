@@ -15,8 +15,7 @@ function Pokemon({ pokemon, setCurrentId,currentId ,accessToken,refreshToken, se
   axiosJWT.interceptors.request.use(async function (config) {
     const decodedToken=jwt_decode(accessToken);
     if(decodedToken.exp < Date.now()/1000){
-      const res=await axios.get('http://localhost:5000/requestNewAccessToken',{
-    //    const res=await axios.get('https://authserver-0vt2.onrender.com/requestNewAccessToken',{ 
+      const res=await axios.get('https://authserver-4m3k.onrender.com/requestNewAccessToken',{
         headers:{'auth-token-refresh':refreshToken} 
       })
 
@@ -35,8 +34,7 @@ function Pokemon({ pokemon, setCurrentId,currentId ,accessToken,refreshToken, se
 
   //  const { id } = useParams()
   useEffect(() => {async function fet(){
-    const res = await axiosJWT.get(`http://localhost:6001/api/v1/pokemon?id=${pokemon.id}&userid=${userid}`, {
- //     const res = await axiosJWT.get(`https://appserver-vff5.onrender.com/api/v1/pokemon?id=${pokemon.id}&userid=${userid}`, {
+    const res = await axiosJWT.get(`https://appserver-zwla.onrender.com/api/v1/pokemon?id=${pokemon.id}&userid=${userid}`, {
       headers: {
         'auth-token-access': accessToken
       }
@@ -53,13 +51,6 @@ function Pokemon({ pokemon, setCurrentId,currentId ,accessToken,refreshToken, se
     if (id < 100) return `0${id}`
     return id
   }
-  // axios.get(`http://localhost:6001/api/v1/pokemon?id=${pokemon.id}&appid`)
-  //       .then(res => res.data)
-  //       .then(res => {
-  //         console.log(res)
-  //       })
-  //       .catch(err => console.log("err", err))
-
   return (
     
     <div>

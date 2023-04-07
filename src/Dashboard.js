@@ -9,13 +9,11 @@ import Report5 from './Report5'
 
 export default function Dashboard({accessToken,refreshToken, setAccessToken}) { 
   const loc = document.location;
-  function logout(){
- axios.get('http://localhost:5000/logout')
-   .catch(err => console.log("err", err))
-    loc.reload(true);
- 
-  
-}
+  function handleLogout(){
+    axios.get('https://authserver-4m3k.onrender.com/logout')
+     .catch(err => console.log("err", err))
+      loc.reload(true);
+  }
   return (
     <>
       <nav>
@@ -36,7 +34,7 @@ export default function Dashboard({accessToken,refreshToken, setAccessToken}) {
         <Route path="/Report/4" element={<Report4 id={4} accessToken={accessToken} setAccessToken={setAccessToken} refreshToken ={refreshToken}/>} />
         <Route path="/Report/5" element={<Report5 id={5} accessToken={accessToken} setAccessToken={setAccessToken} refreshToken ={refreshToken}/>} />
       </Routes>
-      <button onClick={() => logout()}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
     </>
   )
 }

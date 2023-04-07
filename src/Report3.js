@@ -20,8 +20,7 @@ export default function Report({
   axiosJWT.interceptors.request.use(async function (config) {
     const decodedToken=jwt_decode(accessToken);
     if(decodedToken.exp < Date.now()/1000){
-      const res=await axios.get('http://localhost:5000/requestNewAccessToken',{
-     //   const res=await axios.get('https://authserver-0vt2.onrender.com/requestNewAccessToken',{
+      const res=await axios.get('https://authserver-4m3k.onrender.com/requestNewAccessToken',{
         headers:{'auth-token-refresh':refreshToken} 
       })
 
@@ -36,8 +35,7 @@ export default function Report({
  
   //  const { id } = useParams()
   useEffect(() => {async function fet(){
-    const res = await axiosJWT.get(`http://localhost:6001/report/${id}`, {
-    //  const res = await axiosJWT.get(`https://appserver-vff5.onrender.com/report/${id}`, {
+    const res = await axiosJWT.get(`https://appserver-zwla.onrender.com/report/${id}`, {
       headers: {
         'auth-token-access': accessToken
       }

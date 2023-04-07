@@ -42,8 +42,7 @@ function UserPage({ username, refreshtoken, accesstoken, setAccesstoken }) {
   const loc = document.location;
 
   function handleLogout(){
-    axios.get('http://localhost:5000/logout')
- //   axios.get('https://authserver-0vt2.onrender.com/logout')
+    axios.get('https://authserver-4m3k.onrender.com/logout')
      .catch(err => console.log("err", err))
       loc.reload(true);
   }
