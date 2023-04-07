@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import "./style.css"
 
-function Search({ setTypeSelectedArray }) {
+function Search({ setTypeSelectedArray, filterText,onFilterTextChange }) {
   const [types, setTypes] = useState([])
 
 
@@ -29,7 +29,13 @@ function Search({ setTypeSelectedArray }) {
 
   return (
     <div >
-      <h3>Search by Type...</h3>
+      <h3>Search by name:</h3>
+      <input 
+        type="text" 
+        value={filterText} placeholder="Search..." 
+        onChange={(e) => onFilterTextChange(e.target.value)} />
+        <br/>
+      <h3>Search by Type:</h3>
       <div className='type'>
         {
           types.map(type => <div key={type}>

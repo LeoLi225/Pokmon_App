@@ -11,6 +11,7 @@ function UserPage({ username, refreshtoken, accesstoken, setAccesstoken }) {
   const [currentId, setCurrentId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(10);
+  const [filterText, setFilterText] = useState('');
 
   useEffect(() => {
     axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json')
@@ -29,25 +30,32 @@ function UserPage({ username, refreshtoken, accesstoken, setAccesstoken }) {
     }
     return 1;
   })
-  //  let p1=pokemons.filter(item=>item.name.english===filterText);
-  //  newList= (p1.length===1)?p1:newList;
-  //  newList= (p1.length===0 && filterText!=="")?p1:newList;
+   let p1=pokemons.filter(item=>item.name.english===filterText);
+   newList= (p1.length===1)?p1:newList;
+   newList= (p1.length===0 && filterText!=="")?p1:newList;
 
   //   console.log(p1);
   const indexOfLastRecord = currentPage * pokemonsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - pokemonsPerPage;
   const currentPokemons = newList.slice(indexOfFirstRecord, indexOfLastRecord)
   const numberOfPages = Math.ceil(newList.length / pokemonsPerPage);
+  const loc = document.location;
 
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/";
-  };
+  function handleLogout(){
+    axios.get('http://localhost:5000/logout')
+ //   axios.get('https://authserver-0vt2.onrender.com/logout')
+     .catch(err => console.log("err", err))
+      loc.reload(true);
+  }
+  
 
   return (
     <>
       <Search
         setTypeSelectedArray={setTypeSelectedArray}
+        typeSelectedArray={typeSelectedArray}
+        filterText ={filterText}
+        onFilterTextChange={setFilterText}
       />
       < Page currentPokemons={currentPokemons} setCurrentId={setCurrentId} currentId={currentId} 
             refreshtoken={refreshtoken} username={username} accesstoken={accesstoken} setAccesstoken={setAccesstoken} 

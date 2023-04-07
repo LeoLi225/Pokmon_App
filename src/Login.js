@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import UserPage from "./UserPage";
-import AdminDashboard from "./AdminDashboard";
+import AdminDashboard from "./Dashboard";
 import { BrowserRouter } from "react-router-dom"
 
 function Login () {
@@ -11,17 +11,6 @@ function Login () {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
   const [userid , setUserid] =useState('');
-
-  // const handleLogin = (e) => {
-  //   if (username === "test" && password === "test") {
-        
-  //       window.location.href = "/user";
-  //     } else if (username === "admin" && password === "admin") {
-  //       localStorage.setItem("isLoggedIn", true);
-  //       localStorage.setItem("role", "admin");
-  //       window.location.href = "/admin";
-  //     } 
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,11 +36,11 @@ function Login () {
 
   return (
     <div>
-      {user?.username ?(user?.username==="test" ? (
+      {user?.username ?(user?.username==="admin" ? (
         <>
           <h1>Welcome {user.username}</h1>
           <BrowserRouter>
-          <UserPage username={username} refreshtoken={refreshtoken} accesstoken={accesstoken} setAccesstoken={setAccesstoken}/>
+          <AdminDashboard accessToken={accesstoken} refreshToken={refreshtoken} setAccessToken={setAccesstoken}/>
           </BrowserRouter> 
           
         </>
@@ -59,7 +48,7 @@ function Login () {
         <>
           <h1>Welcome {user.username}</h1>
           <BrowserRouter>
-          <AdminDashboard />
+          <UserPage username={username} refreshtoken={refreshtoken} accesstoken={accesstoken} setAccesstoken={setAccesstoken}/>
           </BrowserRouter>
           
         </>
